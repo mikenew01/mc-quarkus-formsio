@@ -1,0 +1,15 @@
+version: '2.2'
+
+services:
+  mc-quarkus-formsio-mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      - SA_PASSWORD=M@ikon1234.
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - database_mssql
+
+volumes:
+  database_mssql:
