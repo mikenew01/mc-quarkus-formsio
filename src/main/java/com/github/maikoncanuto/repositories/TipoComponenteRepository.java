@@ -20,6 +20,7 @@ public class TipoComponenteRepository {
         return tipoComponente;
     }
 
+    @Transactional
     public TipoComponente update(final TipoComponente tipoComponente) {
         return entityManager.merge(tipoComponente);
     }
@@ -30,6 +31,11 @@ public class TipoComponenteRepository {
 
     public List<TipoComponente> findAll() {
         return entityManager.createQuery("SELECT tipo FROM TipoComponente tipo", TipoComponente.class).getResultList();
+    }
+
+    @Transactional
+    public void delete(final Long id) {
+        entityManager.remove(findById(id));
     }
 
 }
